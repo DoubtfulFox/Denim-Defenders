@@ -1,0 +1,336 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main styling */
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000; /* Set background color to black */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+	overflow-x: hidden;  /* 🚫 stop sideways scroll */
+    overflow-y: auto;  /* allow vertical scrolling */
+}
+
+/* Header container */
+.header-with-images {
+    position: relative;
+    width: 100%;          /* ensures it never exceeds viewport */
+    height: 20vh;          /* reasonable height for mobile */
+    min-height: 140px;
+    overflow: hidden;      /* prevent side scroll */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;           /* full width of container */
+    height: 100%;          /* full height of container */
+    object-fit: cover;     /* crop to fit container */
+    z-index: 1;
+    opacity: 0.3;
+}
+
+.header-image {
+    height: 50%;           /* scale with header height */
+    width: auto;
+    margin: 0 3vw;         /* relative spacing so it won’t push content out */
+    z-index: 2;
+}
+
+/* Hearts */
+.left-image,
+.right-image {
+    position: absolute;
+    top: 50%;
+    height: 15vw;     /* heart size */
+    width: auto;
+    z-index: 2;
+}
+
+.left-image {
+    left: 2vw;
+    transform: translateY(-50%);
+}
+
+.right-image {
+    right: 2vw;
+    transform: translateY(-50%);
+}
+
+/* Title */
+.header-with-images h1 {
+    position: relative;
+    z-index: 2;
+    font-size: 6vw;       /* slightly smaller to avoid overlap */
+    color: #f4c542;
+    text-align: center;
+    margin: 0 18vw;        /* leave enough space on both sides for hearts */
+}
+
+/* Popup container */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 90vw;        /* responsive width, 90% of viewport */
+  max-width: 450px;   /* don’t let it get too big on larger devices */
+  height: auto;       /* let content decide height */
+  max-height: 90vh;   /* keep inside viewport vertically */
+  
+  padding: 20px;
+  background-color: #333333;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;   /* scroll inside if content overflows */
+}
+
+
+/* Fade-in effect */
+.fade-in {
+    display: block !important;
+    opacity: 1 !important;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+/* Content section */
+.content {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+
+/* ===== Add Background Section Styles Below ===== */
+.background-section {
+    width: 96%;                 /* wider on mobile */
+    margin: 4vw auto;
+    padding: 4vw;
+    border-radius: 2vw;         /* slightly rounded edges */
+    background: #B59C5A;        /* parchment base */
+    background-image: repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.05) 2px,
+        transparent 2px,
+        transparent 4px
+    );                           /* subtle lines like paper fibers */
+    box-shadow: 0 0 20px rgba(0,0,0,0.3) inset; /* inner shadow for depth */
+    position: relative;
+    overflow: hidden;
+}
+
+.background-section::before,
+.background-section::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    left: 0;
+    background: radial-gradient(circle at top center, transparent 50%, #fdf1c7 51%);
+}
+
+.background-section::before {
+    top: -10px;   /* top torn edge */
+}
+
+.background-section::after {
+    bottom: -10px; /* bottom torn edge */
+    transform: rotate(180deg);
+}
+
+.background-section h2 {
+    text-align: center;        /* centers the heading horizontally */
+    font-size: 2.2rem;         /* adjust for mobile */
+    margin-bottom: 10px;       /* spacing below the heading */
+    color: #5b3a00;            /* match the scroll color */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* optional parchment shadow */
+}
+
+.background-section p {
+    font-family: 'Georgia', serif;  /* classic serif font */
+    color: #5b3a00;                 /* dark brown text */
+    line-height: 1.6;
+}
+/* ===== End Background Section Styles ===== */
+
+
+
+/* ====== underlining Styles ====== */
+.section-subtitle {
+    font-weight: bold;
+    font-size: 1.3rem;                 /* slightly bigger than normal text */
+    color: #f4c542;                     /* golden theme color */
+    text-decoration: underline;          /* enables underline */
+    text-decoration-style: wavy;         /* makes the underline wavy */
+    text-decoration-color: #f4c542;     /* underline color matches text */
+    margin-bottom: 8px;                  /* spacing between heading and paragraph */
+}
+
+
+button {
+    background-color: #f4c542;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #e3b134;
+}
+
+/* Footer styling */
+footer {
+    display: flex;
+    align-items: center;           /* vertical centering */
+    justify-content: flex-start; /* left align text */
+    width: 100%;
+    height: 50px;
+    padding: 0 15px;               /* horizontal spacing from edges */
+    font-size: 0.9rem;
+    color: #777;
+    background-color: #2e2e2e;
+    position: sticky;
+    bottom: 0;
+    box-sizing: border-box;        /* ensures padding doesn’t break width */
+}
+
+/* Rain Effect */
+#rain {
+    position: fixed;   /* ensures it stays in the viewport */
+    top: 0;
+    left: 0;           /* start at the left edge */
+    width: 100vw;      /* full viewport width */
+    height: 100vh;     /* full viewport height */
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;  /* prevent drops from overflowing */
+}
+
+.raindrop {
+    position: absolute;
+    width: 2px;
+    height: 15px;
+    background-color: #b5d3fd;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+/* Lightning Effect */
+#lightning {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #3b2bb1;
+    display: none;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#lightning-bolt {
+    position: fixed;
+    top: 0;
+    width: 5px;
+    height: 100vh;
+    background-color: #3b2bb1;
+    z-index: 10000;
+    opacity: 0;
+    display: none;
+    transform-origin: top center;
+    transform: none;
+    transition: transform 0.2s ease;
+}
+
+@keyframes boltAnimation {
+    0% {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scaleY(1.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+}
+
+.popup-content {
+  text-align: center;
+}
+
+.image-container {
+  position: relative; /* this is necessary for absolute positioning */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* adjust the height as needed */
+}
+
+#crossed_swords {
+  max-width: 80%;   /* shrink on small screens */
+  height: auto;     /* keep proportions */
+  display: block;
+  margin: 0 auto;
+}
+
+
+#surpriseMessage {
+    font-size: 4vw;        /* scales with screen width */
+    white-space: nowrap;    /* prevents wrapping */
+    overflow: hidden;       /* hides overflow if needed */
+    text-align: center;     /* keep it centered */
+    color: #f4c542;         /* golden theme color */
+    font-weight: bold;
+}
+
+#surpriseMessage .emoji {
+    color: inherit; /* optional: leave emoji color as-is */
+    font-size: 4vw; /* match text size */
+}
+
+.between-banner-lore {
+    display: block;
+    width: 25vw;       /* smaller, scales with screen width */
+    max-width: 80px;   /* cap for mobile */
+    height: auto;
+    margin: 1.5vh auto;
+    transform: translateX(-30%);
+}
